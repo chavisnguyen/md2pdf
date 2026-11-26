@@ -16,22 +16,22 @@ class Md2pdf < Formula
   on_macos do
     on_arm do
       url "https://github.com/chavisnguyen/md2pdf/releases/download/v0.1.0/md2pdf-darwin-arm64.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      sha256 "ba2c40dd3e7a32597bd894bab77db61b7f589bad4c389148c9f7a9d379162a73"
     end
     on_intel do
       url "https://github.com/chavisnguyen/md2pdf/releases/download/v0.1.0/md2pdf-darwin-amd64.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      sha256 "ba2c40dd3e7a32597bd894bab77db61b7f589bad4c389148c9f7a9d379162a73"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/chavisnguyen/md2pdf/releases/download/v0.1.0/md2pdf-linux-arm64.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      sha256 "ba2c40dd3e7a32597bd894bab77db61b7f589bad4c389148c9f7a9d379162a73"
     end
     on_intel do
       url "https://github.com/chavisnguyen/md2pdf/releases/download/v0.1.0/md2pdf-linux-amd64.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      sha256 "ba2c40dd3e7a32597bd894bab77db61b7f589bad4c389148c9f7a9d379162a73"
     end
   end
 
