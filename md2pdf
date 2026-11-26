@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+VERSION="0.1.0"
+
+case "${1:-}" in
+  -v|--version|version)
+    echo "md2pdf v${VERSION}"
+    exit 0
+    ;;
+  -h|--help|help|"")
+    echo "md2pdf v${VERSION} — render a Markdown file to a styled PDF proposal."
+    echo ""
+    echo "Usage:"
+    echo "  md2pdf <input.md>"
+    echo "  md2pdf version"
+    exit $([ -z "${1:-}" ] && echo 1 || echo 0)
+    ;;
+esac
+
+# Resolve symlinks (e.g. ~/.gear/bin/md2pdf or /opt/homebrew/bin/md2pdf)
+SOURCE="${BASH_SOURCE[0]}"
+while [ -L "$SOURCE" ]; do
+  DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ "$SOURCE" != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+SCRIPT_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+
+if [ -f "$SCRIPT_DIR/style.css" ]; then
+  STYLE="$SCRIPT_DIR/style.css"
+elif [ -f "$SCRIPT_DIR/../share/md2pdf/style.css" ]; then
+  STYLE="$SCRIPT_DIR/../share/md2pdf/style.css"
+else
+  echo "error: style.css not found next to md2pdf or in ../share/md2pdf/" >&2
+  exit 1
+fi
+
+INPUT="$1"
+if [ ! -f "$INPUT" ]; then
+  echo "Input file not found: $INPUT" >&2
+  exit 1
+fi
+
+npx --yes md-to-pdf "$INPUT" --stylesheet "$STYLE"
+echo "Wrote ${INPUT%.md}.pdf"

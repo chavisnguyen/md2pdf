@@ -29,10 +29,23 @@ headless Chrome directly — same underlying idea, more moving parts to
 maintain. This wrapper does the same thing with one dependency instead
 of two, and no hardcoded Chrome path.)*
 
+## Install
+
+```bash
+brew tap chavisnguyen/md2pdf https://github.com/chavisnguyen/md2pdf
+brew install md2pdf
+```
+
+Or via [gear](https://github.com/chavisnguyen/gear):
+
+```bash
+gear add github:chavisnguyen/md2pdf
+```
+
 ## Usage
 
 ```bash
-./md2pdf.sh input.md
+md2pdf input.md
 ```
 
 Writes `input.pdf` next to the input file.
